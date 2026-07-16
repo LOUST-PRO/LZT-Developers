@@ -1,5 +1,7 @@
 # LZT-Developers Community
 
+[![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/LOUST-PRO/LZT-Developers/blob/main/README-es.md)
+
 Welcome to the **LZT-Developers** hub! This is the official community platform and developer directory for the LOUST-PRO engineering ecosystem.
 
 ## 🚀 How to Join
@@ -10,14 +12,14 @@ We use a declarative, zero-conflict approach. Instead of editing a monolithic JS
 2. Create a file named `your-github-username.yml` inside the `/members` folder.
 3. Fill it out using this template:
    ```yaml
-   username: tu-usuario
-   name: Tu Nombre Completo
+   username: your-github-username
+   name: Your Full Name
    role: Full Stack Developer
    skills: 
      - Next.js
      - Rust
      - TypeScript
-   github: "https://github.com/tu-usuario"
+   github: "https://github.com/your-github-username"
    ```
 4. **Submit a Pull Request**.
 
