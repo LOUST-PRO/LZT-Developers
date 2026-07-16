@@ -1,0 +1,39 @@
+name: "Auto-Tagger & Assigner"
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    paths:
+      - 'members/**'
+
+jobs:
+  triage:
+    runs-on: self-hosted
+    steps:
+      - name: Auto-assign and Label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Add labels
+            await github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['new-member', 'needs-review']
+            })
+            
+            // Assign to louzt
+            await github.rest.issues.addAssignees({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              assignees: ['louzt']
+            })
+            
+            // Welcome Comment
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 **Welcome to the LZT-Developers network!**\n\nThanks for submitting your profile. Our auto-tagger has assigned @louzt to review your YAML schema. Once merged, your profile will instantly go live on [devs.github.loust.pro](https://devs.github.loust.pro).'
+            })
