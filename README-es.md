@@ -10,7 +10,7 @@
 
 ¡Bienvenido al hub de **LZT-Developers**! Esta es la plataforma oficial de la comunidad y el directorio de desarrolladores para el ecosistema de ingeniería de LOUST-PRO.
 
-🌐 **Directorio en Vivo:** [devs.github.loust.pro](https://devs.github.loust.pro)
+🌐 **Directorio en Vivo:** [devs-github.loust.pro](https://devs-github.loust.pro)
 
 ## 🤝 ¿Por qué Unirte?
 

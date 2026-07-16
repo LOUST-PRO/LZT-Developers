@@ -35,5 +35,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 **Welcome to the LZT-Developers network!**\n\nThanks for submitting your profile. Our auto-tagger has assigned @louzt to review your YAML schema. Once merged, your profile will instantly go live on [devs.github.loust.pro](https://devs.github.loust.pro).'
+              body: '👋 **Welcome to the LZT-Developers network!**\n\nThanks for submitting your profile. Our auto-tagger has assigned @louzt to review your YAML schema. Once merged, your profile will instantly go live on [devs-github.loust.pro](https://devs-github.loust.pro).'
             })
