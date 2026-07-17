@@ -4,7 +4,7 @@ export default function Home() {
   const members = getMembers();
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 p-8 sm:p-20 font-sans">
+    <div className="p-8 sm:p-20 font-sans">
       <main className="max-w-5xl mx-auto flex flex-col gap-12">
         <header className="text-center space-y-4">
           <h1 className="text-4xl sm:text-6xl font-black bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent">
