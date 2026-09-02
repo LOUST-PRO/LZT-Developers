@@ -72,23 +72,23 @@ Or do it manually:
 
 Once your PR is merged, our CI build automatically regenerates the directory and publishes your live card on **[devs-github.loust.pro](https://devs-github.loust.pro)**.
 
-## 🛠️ Explore the LOUST-PRO Open-Source Ecosystem
+## Open-Source Ecosystem
 
-Discover our core open-source repositories and sovereign systems:
+Discover our core open-source repositories and infrastructure systems:
 
-| Project | Stack | Description | Invariant / Focus |
+| Project | Stack | Description | Technical Focus |
 | :--- | :--- | :--- | :--- |
-| **[SnapPipe](https://github.com/LOUST-PRO/SnapPipe)** | Rust | Zero-Trust Identity-Anchored WireGuard/QUIC Relay | Identity Tickets & Zero-Vendor Lock-in |
-| **[LinkMarks](https://github.com/LOUST-PRO/LinkMarks)** | Rust | Local-First CRDT Automerge Bookmark Manager | Single binary, zero cloud dependency |
-| **[PaperForge](https://github.com/LOUST-PRO/paperforge)** | Rust · GTK4 | Linux Wallpaper Engine Frontend | Multi-monitor & Wayland IPC coordination |
-| **[TaxonRouter](https://github.com/LOUST-PRO/TaxonRouter)** | Go | Automated Multi-Agent PR Tagger & MCP Server | Deterministic rules & LLM agent workflows |
-| **[storage-mountguardian](https://github.com/LOUST-PRO/storage-mountguardian)** | Rust | Proactive SCSI/Block Device Hang Reaper | Prevents unkillable `D`-state kernel deadlocks |
-| **[NetBoozt](https://github.com/LOUST-PRO/NetBoozt_InternetUpgrade)** | Rust · Tauri | ISP Intelligence & TCP Congestion Tuning | Sub-10ms bufferbloat & latency diagnostics |
-| **[lzt-virtuoso-tools](https://github.com/LOUST-PRO/lzt-virtuoso-tools)** | Python | SPARQL TriG RDF Knowledge Engine | Graph provenance & deterministic archival |
+| **[SnapPipe](https://github.com/LOUST-PRO/SnapPipe)** | Rust | Identity-based QUIC transport toolkit and self-hosted relay scaffolding | Ed25519 identity tickets, carrier-grade NAT traversal, zero vendor lock-in |
+| **[LinkMarks](https://github.com/LOUST-PRO/LinkMarks)** | Rust | Local-first, single-binary bookmark manager with TUI and SQLite | Deterministic deduplication, Chromium/Firefox/HTML parsers, offline-first |
+| **[PaperForge](https://github.com/LOUST-PRO/paperforge)** | Rust | Linux workspace and frontend for Wallpaper Engine Workshop scenes | Per-monitor playlists, POSIX audio controls, Wayland process isolation |
+| **[TaxonRouter](https://github.com/LOUST-PRO/TaxonRouter)** | Go | GitHub Projects (v2) board automation daemon and MCP server | Webhook event classifier, GraphQL card synchronization, agent tool provider |
+| **[storage-mountguardian](https://github.com/LOUST-PRO/storage-mountguardian)** | Rust | Linux daemon preventing kernel D-state freezes on failing block devices | Real-time `/dev/kmsg` monitoring, surgical lazy unmounting, ~4 MB RSS |
+| **[NetBoozt](https://github.com/LOUST-PRO/NetBoozt_InternetUpgrade)** | Rust · Tauri | Cross-platform TCP network optimization and latency diagnostic utility | BBR congestion tuning, failover management, sub-10ms bufferbloat mitigation |
+| **[lzt-virtuoso-tools](https://github.com/LOUST-PRO/lzt-virtuoso-tools)** | Python | RDF dataset ingestion pipeline and SPARQL knowledge graph tooling | Deterministic N-Triples and JSONL processing, graph provenance verification |
 
-## 📐 Architecture
+## Platform Architecture
 
-- **Framework:** Next.js (App Router)
-- **Deployment:** Standalone Multi-Tenant (Docker/K3s ready)
-- **Data Source:** Local File System (`yaml` parsing via `fs`)
-- **License:** GNU AGPLv3 (Ensuring the platform remains truly open-source even as a SaaS)
+- **Framework:** Next.js 16 (App Router)
+- **Deployment:** Standalone multi-tenant containerized on Docker & K3s
+- **Data Source:** Local file system (`yaml` parsing via `fs` at build time)
+- **License:** GNU AGPLv3 (Ensuring the platform remains sovereign and open-source)

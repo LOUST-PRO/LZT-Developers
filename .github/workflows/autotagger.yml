@@ -42,23 +42,23 @@ jobs:
 
               // Welcome Comment in English
               const welcomeBody = [
-                `👋 **Welcome to the LZT-Developers network, @${author}!**`,
+                `**Welcome to the LZT-Developers Directory, @${author}!**`,
                 '',
-                'Thank you for submitting your member profile! Our CI bot has assigned @louzt to verify the YAML schema.',
+                'Thank you for submitting your member profile. Our automation has assigned @louzt to verify the YAML schema format.',
                 '',
-                'Once merged, your profile will automatically go live on **[devs-github.loust.pro](https://devs-github.loust.pro)**.',
+                'Once merged, your developer card will be published live at **[devs-github.loust.pro](https://devs-github.loust.pro)**.',
                 '',
-                '### 🛠️ Explore the LOUST-PRO Open-Source Ecosystem',
-                'While your PR is being reviewed, check out our flagship sovereign engineering systems:',
-                '- 🚀 **[SnapPipe](https://github.com/LOUST-PRO/SnapPipe)** — Zero-Trust Identity-Anchored WireGuard/QUIC Relay (Rust)',
-                '- 🔖 **[LinkMarks](https://github.com/LOUST-PRO/LinkMarks)** — Fast Local-First CRDT Automerge Bookmark Manager (Rust)',
-                '- 🎨 **[PaperForge](https://github.com/LOUST-PRO/paperforge)** — GTK4 Linux Wallpaper Engine Frontend (Rust)',
-                '- 🏷️ **[TaxonRouter](https://github.com/LOUST-PRO/TaxonRouter)** — Automated Multi-Agent PR Tagger & MCP Server (Go)',
-                '- 🛡️ **[storage-mountguardian](https://github.com/LOUST-PRO/storage-mountguardian)** — Kernel Block Device Freeze Reaper (Rust)',
-                '- ⚡ **[NetBoozt](https://github.com/LOUST-PRO/NetBoozt_InternetUpgrade)** — Sub-10ms ISP TCP Tuning & Diagnostics (Rust/Tauri)',
-                '- 🧠 **[lzt-virtuoso-tools](https://github.com/LOUST-PRO/lzt-virtuoso-tools)** — SPARQL TriG RDF Knowledge Engine (Python)',
+                '### Open-Source Ecosystem',
+                'While your profile is being reviewed, explore our core open-source projects:',
+                '- **[SnapPipe](https://github.com/LOUST-PRO/SnapPipe)** — Identity-based QUIC transport toolkit and self-hosted relay scaffolding (Rust)',
+                '- **[LinkMarks](https://github.com/LOUST-PRO/LinkMarks)** — Local-first, single-binary bookmark manager with TUI and SQLite (Rust)',
+                '- **[PaperForge](https://github.com/LOUST-PRO/paperforge)** — Linux workspace and frontend for Wallpaper Engine scenes (Rust)',
+                '- **[TaxonRouter](https://github.com/LOUST-PRO/TaxonRouter)** — GitHub Projects (v2) board automation daemon and MCP server (Go)',
+                '- **[storage-mountguardian](https://github.com/LOUST-PRO/storage-mountguardian)** — Linux daemon preventing kernel D-state freezes on failing storage (Rust)',
+                '- **[NetBoozt](https://github.com/LOUST-PRO/NetBoozt_InternetUpgrade)** — Cross-platform TCP optimization and latency diagnostics (Rust/Tauri)',
+                '- **[lzt-virtuoso-tools](https://github.com/LOUST-PRO/lzt-virtuoso-tools)** — RDF dataset ingestion pipeline and SPARQL tooling (Python)',
                 '',
-                '⭐ *If you appreciate our local-first systems work, consider leaving a star on these repos!*'
+                '*If you find these systems useful, consider starring the repositories on GitHub.*'
               ].join('\n');
 
               await github.rest.issues.createComment({
@@ -70,15 +70,15 @@ jobs:
             } else if (action === 'closed' && pr.merged) {
               // Add merged celebration comment
               const celebrationBody = [
-                `🎉 **Congratulations @${author}! Your profile is officially merged!**`,
+                `**Congratulations @${author}! Your profile is now live.**`,
                 '',
-                `Your developer profile has been incorporated into the directory and will be published live at:`,
-                `👉 **[devs-github.loust.pro](https://devs-github.loust.pro)**`,
+                `Your developer card has been incorporated into the directory and is available at:`,
+                `**[devs-github.loust.pro](https://devs-github.loust.pro)**`,
                 '',
-                'Welcome to the **LOUST-PRO** community! Thank you for contributing to our open-source network.',
+                'Thank you for contributing to the directory.',
                 '',
-                '⭐ **Support our ongoing work:**',
-                'If you find our tooling valuable, please consider giving a star to our core repositories:',
+                '**Support our open-source tools:**',
+                'If you find our tooling valuable, consider leaving a star on our core repositories:',
                 '- [SnapPipe](https://github.com/LOUST-PRO/SnapPipe)',
                 '- [LinkMarks](https://github.com/LOUST-PRO/LinkMarks)',
                 '- [PaperForge](https://github.com/LOUST-PRO/paperforge)',
