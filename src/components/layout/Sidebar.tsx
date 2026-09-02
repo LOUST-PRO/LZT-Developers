@@ -1,39 +1,151 @@
+'use client';
+
 import Link from "next/link";
-import { Home, Users, Terminal, Briefcase } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { 
+  Home, 
+  Users, 
+  Code2, 
+  Briefcase, 
+  PanelLeftClose, 
+  PanelLeft, 
+  ExternalLink 
+} from "lucide-react";
 
-export function Sidebar() {
+interface SidebarProps {
+  expanded: boolean;
+  onToggle: () => void;
+}
+
+export function Sidebar({ expanded, onToggle }: SidebarProps) {
+  const pathname = usePathname();
+
+  const navItems = [
+    {
+      label: "Overview",
+      href: "/",
+      icon: Home,
+      active: pathname === "/",
+      external: false,
+    },
+    {
+      label: "Directory",
+      href: "/",
+      icon: Users,
+      active: pathname === "/",
+      external: false,
+    },
+    {
+      label: "GitHub Source",
+      href: "https://github.com/LOUST-PRO/LZT-Developers",
+      icon: Code2,
+      active: false,
+      external: true,
+    },
+    {
+      label: "LOUST Systems",
+      href: "https://loust.pro",
+      icon: Briefcase,
+      active: false,
+      external: true,
+    },
+  ];
+
   return (
-    <aside className="w-64 fixed h-full flex flex-col bg-slate-950/80 backdrop-blur-lg border-r border-slate-800/60 z-50 text-slate-300">
-      <div className="p-6 border-b border-slate-800/60">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/50 flex items-center justify-center">
-            <span className="font-bold text-indigo-400">LZT</span>
-          </div>
-          <span className="font-bold text-lg text-slate-100 tracking-tight">Developers</span>
-        </div>
-      </div>
-      
-      <nav className="flex-1 p-4 space-y-2">
-        <Link href="/" className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-slate-800/50 hover:text-white transition-colors group">
-          <Home className="w-5 h-5 text-slate-400 group-hover:text-indigo-400 transition-colors" />
-          <span className="font-medium text-sm">Overview</span>
-        </Link>
-        <Link href="/members" className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 shadow-inner">
-          <Users className="w-5 h-5 text-indigo-400" />
-          <span className="font-medium text-sm">Community Directory</span>
-        </Link>
-        <a href="https://github.com/LOUST-PRO/LZT-Developers" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-slate-800/50 hover:text-white transition-colors group">
-          <Terminal className="w-5 h-5 text-slate-400 group-hover:text-indigo-400 transition-colors" />
-          <span className="font-medium text-sm">Source Code</span>
-        </a>
-        <a href="https://loust.pro/careers" target="_blank" rel="noreferrer" className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-slate-800/50 hover:text-white transition-colors group">
-          <Briefcase className="w-5 h-5 text-slate-400 group-hover:text-indigo-400 transition-colors" />
-          <span className="font-medium text-sm">Enterprise & Careers</span>
-        </a>
-      </nav>
+    <aside 
+      className={`fixed top-0 left-0 h-full flex flex-col justify-between bg-slate-950/85 backdrop-blur-xl border-r border-slate-800/70 z-50 text-slate-300 transition-all duration-300 ease-in-out ${
+        expanded ? 'w-64 shadow-2xl shadow-indigo-950/30' : 'w-16'
+      }`}
+    >
+      <div>
+        {/* Header / Brand */}
+        <div className="h-16 flex items-center px-4 border-b border-slate-800/60 justify-between">
+          <Link href="/" className="flex items-center gap-3 overflow-hidden">
+            <div className="w-8 h-8 shrink-0 rounded-lg bg-gradient-to-br from-sky-500/20 to-indigo-500/30 border border-sky-500/40 flex items-center justify-center shadow-inner">
+              <span className="font-mono font-black text-sm text-sky-400">LZ</span>
+            </div>
+            {expanded && (
+              <div className="flex flex-col truncate">
+                <span className="font-bold text-sm text-slate-100 tracking-tight leading-tight">LZT-Developers</span>
+                <span className="text-[10px] font-mono text-slate-400">Directory</span>
+              </div>
+            )}
+          </Link>
 
-      <div className="p-6 border-t border-slate-800/60 text-xs text-slate-500">
-        &copy; {new Date().getFullYear()} LOUST-PRO
+          {expanded && (
+            <button
+              onClick={onToggle}
+              aria-label="Collapse sidebar"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors"
+            >
+              <PanelLeftClose className="w-4 h-4" />
+            </button>
+          )}
+        </div>
+
+        {/* Navigation Items */}
+        <nav className="p-2 space-y-1 mt-2">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const content = (
+              <div
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group relative ${
+                  item.active
+                    ? 'bg-sky-500/10 text-sky-300 border border-sky-500/25 shadow-sm'
+                    : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+                }`}
+                title={!expanded ? item.label : undefined}
+              >
+                <Icon className={`w-5 h-5 shrink-0 transition-transform duration-200 group-hover:scale-110 ${
+                  item.active ? 'text-sky-400' : 'text-slate-400 group-hover:text-slate-200'
+                }`} />
+                {expanded && (
+                  <span className="font-medium text-sm truncate flex-1">{item.label}</span>
+                )}
+                {expanded && item.external && (
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                )}
+              </div>
+            );
+
+            return item.external ? (
+              <a 
+                key={item.label} 
+                href={item.href} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="block"
+              >
+                {content}
+              </a>
+            ) : (
+              <Link key={item.label} href={item.href} className="block">
+                {content}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
+
+      {/* Footer / Toggle & Copyright */}
+      <div className="p-2 border-t border-slate-800/60">
+        {!expanded && (
+          <button
+            onClick={onToggle}
+            aria-label="Expand sidebar"
+            title="Expand Sidebar"
+            className="w-full flex items-center justify-center p-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors"
+          >
+            <PanelLeft className="w-5 h-5" />
+          </button>
+        )}
+
+        {expanded && (
+          <div className="px-3 py-2 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span>&copy; {new Date().getFullYear()} LOUST</span>
+            <span className="px-1.5 py-0.5 rounded bg-slate-800/80 text-slate-400 border border-slate-700/60">AGPLv3</span>
+          </div>
+        )}
       </div>
     </aside>
   );

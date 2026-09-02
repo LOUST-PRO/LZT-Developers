@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Sidebar } from "@/components/layout/Sidebar";
+import { AppShell } from "@/components/layout/AppShell";
 import { Squares } from "@/components/ui/squares";
 
 const geistSans = Geist({
@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LZT-Developers",
-  description: "LOUST-PRO Community Directory",
+  title: "LZT-Developers Directory",
+  description: "Curated Directory of Independent Builders and Systems Engineers in the LOUST-PRO Ecosystem",
 };
 
 export default function RootLayout({
@@ -29,24 +29,22 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex bg-[#020617] text-slate-200">
-        <Sidebar />
-        
-        {/* Background layer */}
-        <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+      <body className="min-h-full flex bg-[#020617] text-slate-200 selection:bg-sky-500/20 selection:text-sky-300">
+        {/* Ambient floating squares background inspired by showcase-app */}
+        <div className="fixed inset-0 z-0 pointer-events-none opacity-45">
           <Squares 
             direction="diagonal"
-            speed={0.5}
-            squareSize={40}
-            borderColor="#ffffff08" 
-            hoverFillColor="#6366f115"
+            speed={0.35}
+            squareSize={56}
+            borderColor="rgba(118, 232, 255, 0.08)" 
+            hoverFillColor="rgba(76, 141, 255, 0.18)"
           />
         </div>
         
-        {/* Main Content Area */}
-        <div className="flex-1 ml-64 min-h-screen relative z-10 flex flex-col">
+        {/* Collapsible App Shell with closed-by-default Sidebar */}
+        <AppShell>
           {children}
-        </div>
+        </AppShell>
       </body>
     </html>
   );
