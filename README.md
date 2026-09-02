@@ -10,22 +10,43 @@
 
 [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/LOUST-PRO/LZT-Developers/blob/main/README-es.md)
 
-Welcome to the **LZT-Developers** hub! This is the official community platform and developer directory for the **LOUST-PRO** engineering ecosystem.
+Welcome to the **LZT-Developers** hub! This is the curated developer directory and public showcase platform built and maintained by **LOUST-PRO**.
 
-🌐 **Live Directory:** [devs-github.loust.pro](https://devs-github.loust.pro)
+🌐 **Live Directory Platform:** [devs-github.loust.pro](https://devs-github.loust.pro)
 
-## 🤝 Why Join?
+---
 
-By adding your profile here, you become visible within our engineering network. 
+## 🎯 Why Get Featured on LZT-Developers?
 
-**For Developers:** We often review this directory when sourcing talent for our open-source initiatives, our internal CRM, or B2B enterprise contracts. We do not guarantee placement, but it is the best way to get on our radar.
-**For Recruiters:** If you see a developer you like and want to coordinate a connection, feel free to **[Schedule a Call](https://calendar.app.google/XR7FkZXWVwfmZ57x6)** with our team.
+The **LZT-Developers Directory** gives independent builders, systems engineers, and open-source contributors a permanent, high-signal public showcase card:
 
-## 🚀 How to Join
+- 🌟 **Public Discovery:** Showcase your engineering role, technical bio, core skills, and personal project links to founders, tech leads, recruiters, and peer contributors who follow our ecosystem.
+- 🔗 **High-Authority Backlinks:** Your card features direct, permanent links to your personal website, GitHub repositories, and LinkedIn profile.
+- 🔒 **Zero Scraping & Zero Tracking:** Built with pure static Next.js Server Components. No hidden tracking scripts, no public database to scrape, and zero telemetry.
+- ⚡ **Git-Native & Declarative:** You retain 100% control over your data. Updating your bio, skills, or links is as simple as opening a git commit on your YAML file.
 
-We use a declarative, zero-conflict approach. Instead of editing a monolithic JSON file, you just add your own YAML file to the `/members` directory and submit a Pull Request.
+> [!NOTE]
+> Submitting your profile publishes your developer card to our public web directory at **[devs-github.loust.pro](https://devs-github.loust.pro)**. It is an open platform showcase designed to highlight your personal projects and expertise to the world.
 
-**Ready? Just click here to auto-generate your PR:**
+---
+
+## 💻 Tech Stack & Platform Architecture
+
+LZT-Developers is built with modern, local-first engineering principles:
+
+- **Framework:** Next.js 16 (App Router) with React 19 Server Components.
+- **Styling:** Tailwind CSS with dark glassmorphic cards and responsive mobile grid.
+- **Storage Layer:** Declarative, zero-conflict file system (`/members/*.yml` parsed at build time via `yaml`).
+- **Deployment:** Standalone multi-tenant containerized on Docker & K3s substrate.
+- **License:** GNU AGPLv3 (Ensuring the platform remains sovereign and open-source).
+
+---
+
+## 🚀 How to Add Your Profile (Takes 2 Minutes)
+
+We use a declarative, zero-conflict approach. Instead of editing a monolithic JSON file, you simply add your own YAML file to the `/members` directory.
+
+**Ready? Just click here to auto-generate your profile PR:**
 <a href="https://github.com/LOUST-PRO/LZT-Developers/new/main/members?filename=your-username.yml&value=username%3A%20your-username%0Aname%3A%20Your%20Name%0Arole%3A%20Software%20Engineer%0Abio%3A%20%22Passionate%20about%20building%20resilient%20systems%20and%20high-throughput%20architectures.%22%0Askills%3A%20%0A%20%20-%20Next.js%0A%20%20-%20Rust%0Agithub%3A%20%22https%3A%2F%2Fgithub.com%2Fyour-username%22%0Alinkedin%3A%20%22%22%0Awebsite%3A%20%22%22">
   <img src="https://img.shields.io/badge/Join_LZT_Developers-Click_Here_to_Add_Your_Profile-1E293B?style=for-the-badge&logo=github&logoColor=white" alt="Join LZT Developers">
 </a>
@@ -49,7 +70,7 @@ Or do it manually:
    ```
 4. **Submit a Pull Request**.
 
-Once your PR is merged, our Next.js Server Components dynamically parse the YAMLs at build time and render your profile on the community site. **Zero public API endpoints, 100% protection against data scraping.**
+Once your PR is merged, our CI build automatically regenerates the directory and publishes your live card on **[devs-github.loust.pro](https://devs-github.loust.pro)**.
 
 ## 🛠️ Explore the LOUST-PRO Open-Source Ecosystem
 
