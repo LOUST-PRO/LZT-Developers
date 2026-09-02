@@ -26,7 +26,7 @@ By adding your profile here, you become visible within our engineering network.
 We use a declarative, zero-conflict approach. Instead of editing a monolithic JSON file, you just add your own YAML file to the `/members` directory and submit a Pull Request.
 
 **Ready? Just click here to auto-generate your PR:**
-<a href="https://github.com/LOUST-PRO/LZT-Developers/new/main/members?filename=your-username.yml&value=username%3A%20your-username%0Aname%3A%20Your%20Name%0Arole%3A%20Software%20Engineer%0Askills%3A%20%0A%20%20-%20Next.js%0A%20%20-%20Rust%0Agithub%3A%20%22https%3A%2F%2Fgithub.com%2Fyour-username%22%0Awebsite%3A%20%22%22">
+<a href="https://github.com/LOUST-PRO/LZT-Developers/new/main/members?filename=your-username.yml&value=username%3A%20your-username%0Aname%3A%20Your%20Name%0Arole%3A%20Software%20Engineer%0Abio%3A%20%22Passionate%20about%20building%20resilient%20systems%20and%20high-throughput%20architectures.%22%0Askills%3A%20%0A%20%20-%20Next.js%0A%20%20-%20Rust%0Agithub%3A%20%22https%3A%2F%2Fgithub.com%2Fyour-username%22%0Alinkedin%3A%20%22%22%0Awebsite%3A%20%22%22">
   <img src="https://img.shields.io/badge/Join_LZT_Developers-Click_Here_to_Add_Your_Profile-1E293B?style=for-the-badge&logo=github&logoColor=white" alt="Join LZT Developers">
 </a>
 
@@ -37,12 +37,15 @@ Or do it manually:
    ```yaml
    username: your-github-username
    name: Your Full Name
-   role: Full Stack Developer
+   role: Full Stack Developer / Systems Architect
+   bio: "A concise technical overview of what you build or research (generous limit up to 320 chars)."
    skills: 
      - Next.js
      - Rust
      - TypeScript
    github: "https://github.com/your-github-username"
+   linkedin: "https://www.linkedin.com/in/your-profile" # Optional
+   website: "https://your-site.com" # Optional
    ```
 4. **Submit a Pull Request**.
 

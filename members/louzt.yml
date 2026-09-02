@@ -1,11 +1,13 @@
 username: louzt
 name: David Mireles
-role: Lead Network Performance Engineer
+role: Systems Architect & Founder
+bio: "Founder & CTO at LOUST. Specializing in high-throughput network architectures, sovereign AI agent runtimes, and low-level Linux systems hardening across Rust and Go."
 skills: 
   - Rust
+  - Go
   - Linux Kernel
-  - QUIC
+  - QUIC / BBR
   - Next.js
-  - BBR
 github: "https://github.com/louzt"
 website: "https://loust.pro"
+linkedin: "https://www.linkedin.com/in/davidmirelesll/"
