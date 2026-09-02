@@ -2,38 +2,94 @@ name: "Auto-Tagger & Assigner"
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, closed]
     paths:
       - 'members/**'
 
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
 jobs:
   triage:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: Auto-assign and Label
+      - name: Process Member PR
         uses: actions/github-script@v7
         with:
           script: |
-            // Add labels
-            await github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['new-member', 'needs-review']
-            })
-            
-            // Assign to louzt
-            await github.rest.issues.addAssignees({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              assignees: ['louzt']
-            })
-            
-            // Welcome Comment
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 **Welcome to the LZT-Developers network!**\n\nThanks for submitting your profile. Our auto-tagger has assigned @louzt to review your YAML schema. Once merged, your profile will instantly go live on [devs-github.loust.pro](https://devs-github.loust.pro).'
-            })
+            const action = context.payload.action;
+            const pr = context.payload.pull_request;
+            const author = pr.user.login;
+
+            if (action === 'opened' || action === 'reopened') {
+              // Add triage labels
+              await github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: ['new-member', 'needs-review']
+              });
+
+              // Assign to louzt
+              await github.rest.issues.addAssignees({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                assignees: ['louzt']
+              });
+
+              // Welcome Comment in English
+              const welcomeBody = [
+                `👋 **Welcome to the LZT-Developers network, @${author}!**`,
+                '',
+                'Thank you for submitting your member profile! Our CI bot has assigned @louzt to verify the YAML schema.',
+                '',
+                'Once merged, your profile will automatically go live on **[devs-github.loust.pro](https://devs-github.loust.pro)**.',
+                '',
+                '### 🛠️ Explore the LOUST-PRO Open-Source Ecosystem',
+                'While your PR is being reviewed, check out our flagship sovereign engineering systems:',
+                '- 🚀 **[SnapPipe](https://github.com/LOUST-PRO/SnapPipe)** — Zero-Trust Identity-Anchored WireGuard/QUIC Relay (Rust)',
+                '- 🔖 **[LinkMarks](https://github.com/LOUST-PRO/LinkMarks)** — Fast Local-First CRDT Automerge Bookmark Manager (Rust)',
+                '- 🎨 **[PaperForge](https://github.com/LOUST-PRO/paperforge)** — GTK4 Linux Wallpaper Engine Frontend (Rust)',
+                '- 🏷️ **[TaxonRouter](https://github.com/LOUST-PRO/TaxonRouter)** — Automated Multi-Agent PR Tagger & MCP Server (Go)',
+                '- 🛡️ **[storage-mountguardian](https://github.com/LOUST-PRO/storage-mountguardian)** — Kernel Block Device Freeze Reaper (Rust)',
+                '- ⚡ **[NetBoozt](https://github.com/LOUST-PRO/NetBoozt_InternetUpgrade)** — Sub-10ms ISP TCP Tuning & Diagnostics (Rust/Tauri)',
+                '- 🧠 **[lzt-virtuoso-tools](https://github.com/LOUST-PRO/lzt-virtuoso-tools)** — SPARQL TriG RDF Knowledge Engine (Python)',
+                '',
+                '⭐ *If you appreciate our local-first systems work, consider leaving a star on these repos!*'
+              ].join('\n');
+
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: welcomeBody
+              });
+            } else if (action === 'closed' && pr.merged) {
+              // Add merged celebration comment
+              const celebrationBody = [
+                `🎉 **Congratulations @${author}! Your profile is officially merged!**`,
+                '',
+                `Your developer profile has been incorporated into the directory and will be published live at:`,
+                `👉 **[devs-github.loust.pro](https://devs-github.loust.pro)**`,
+                '',
+                'Welcome to the **LOUST-PRO** community! Thank you for contributing to our open-source network.',
+                '',
+                '⭐ **Support our ongoing work:**',
+                'If you find our tooling valuable, please consider giving a star to our core repositories:',
+                '- [SnapPipe](https://github.com/LOUST-PRO/SnapPipe)',
+                '- [LinkMarks](https://github.com/LOUST-PRO/LinkMarks)',
+                '- [PaperForge](https://github.com/LOUST-PRO/paperforge)',
+                '- [TaxonRouter](https://github.com/LOUST-PRO/TaxonRouter)',
+                '- [storage-mountguardian](https://github.com/LOUST-PRO/storage-mountguardian)'
+              ].join('\n');
+
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: celebrationBody
+              });
+            }

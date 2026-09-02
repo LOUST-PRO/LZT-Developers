@@ -1,6 +1,8 @@
 # LZT-Developers Community
 
 <p>
+  <a href="https://github.com/LOUST-PRO/LZT-Developers/issues/2"><img src="https://img.shields.io/badge/Good_First_Issue-Add_Your_Profile-22C55E?style=flat-square&logo=github&logoColor=white" alt="Good First Issue"/></a>
+  <a href="https://devs-github.loust.pro"><img src="https://img.shields.io/badge/Live_Directory-devs--github.loust.pro-3B82F6?style=flat-square&logo=vercel&logoColor=white" alt="Live Directory"/></a>
   <a href="https://calendar.app.google/XR7FkZXWVwfmZ57x6"><img src="https://img.shields.io/badge/Schedule_a_Meeting-34A853?style=flat-square&logo=googlecalendar&logoColor=white" alt="Schedule a Meeting (Google Calendar)"/></a>
   <a href="https://www.linkedin.com/company/loust/"><img src="https://img.shields.io/badge/LOUST_PRO-0A66C2?style=flat-square&logo=linkedin" alt="LOUST LinkedIn"></a>
   <a href="https://github.com/louzt"><img src="https://img.shields.io/badge/Founder_&_CTO-louzt-181717?style=flat-square&logo=github" alt="Founder"></a>
@@ -8,7 +10,7 @@
 
 [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/LOUST-PRO/LZT-Developers/blob/main/README-es.md)
 
-Welcome to the **LZT-Developers** hub! This is the official community platform and developer directory for the LOUST-PRO engineering ecosystem.
+Welcome to the **LZT-Developers** hub! This is the official community platform and developer directory for the **LOUST-PRO** engineering ecosystem.
 
 🌐 **Live Directory:** [devs-github.loust.pro](https://devs-github.loust.pro)
 
@@ -46,7 +48,21 @@ Or do it manually:
 
 Once your PR is merged, our Next.js Server Components dynamically parse the YAMLs at build time and render your profile on the community site. **Zero public API endpoints, 100% protection against data scraping.**
 
-## 🛠 Architecture
+## 🛠️ Explore the LOUST-PRO Open-Source Ecosystem
+
+Discover our core open-source repositories and sovereign systems:
+
+| Project | Stack | Description | Invariant / Focus |
+| :--- | :--- | :--- | :--- |
+| **[SnapPipe](https://github.com/LOUST-PRO/SnapPipe)** | Rust | Zero-Trust Identity-Anchored WireGuard/QUIC Relay | Identity Tickets & Zero-Vendor Lock-in |
+| **[LinkMarks](https://github.com/LOUST-PRO/LinkMarks)** | Rust | Local-First CRDT Automerge Bookmark Manager | Single binary, zero cloud dependency |
+| **[PaperForge](https://github.com/LOUST-PRO/paperforge)** | Rust · GTK4 | Linux Wallpaper Engine Frontend | Multi-monitor & Wayland IPC coordination |
+| **[TaxonRouter](https://github.com/LOUST-PRO/TaxonRouter)** | Go | Automated Multi-Agent PR Tagger & MCP Server | Deterministic rules & LLM agent workflows |
+| **[storage-mountguardian](https://github.com/LOUST-PRO/storage-mountguardian)** | Rust | Proactive SCSI/Block Device Hang Reaper | Prevents unkillable `D`-state kernel deadlocks |
+| **[NetBoozt](https://github.com/LOUST-PRO/NetBoozt_InternetUpgrade)** | Rust · Tauri | ISP Intelligence & TCP Congestion Tuning | Sub-10ms bufferbloat & latency diagnostics |
+| **[lzt-virtuoso-tools](https://github.com/LOUST-PRO/lzt-virtuoso-tools)** | Python | SPARQL TriG RDF Knowledge Engine | Graph provenance & deterministic archival |
+
+## 📐 Architecture
 
 - **Framework:** Next.js (App Router)
 - **Deployment:** Standalone Multi-Tenant (Docker/K3s ready)
