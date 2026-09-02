@@ -17,31 +17,31 @@ export default function Home() {
     {
       name: "SnapPipe",
       stack: "Rust",
-      desc: "Identity-based QUIC transport toolkit and self-hosted relay scaffolding.",
+      desc: "Identity-based QUIC transport toolkit and self-hosted relay scaffolding with signed Ed25519 tickets.",
       href: "https://github.com/LOUST-PRO/SnapPipe",
     },
     {
       name: "LinkMarks",
       stack: "Rust",
-      desc: "Local-first, single-binary bookmark manager with TUI and SQLite.",
+      desc: "Local-first, single-binary bookmark manager with CRDT sync (Automerge) and SQLite.",
       href: "https://github.com/LOUST-PRO/LinkMarks",
     },
     {
       name: "PaperForge",
-      stack: "Rust",
-      desc: "Linux workspace and frontend for Wallpaper Engine Workshop scenes.",
+      stack: "Rust · GTK4",
+      desc: "Linux workspace and frontend for Wallpaper Engine Workshop scenes with async runtime.",
       href: "https://github.com/LOUST-PRO/paperforge",
     },
     {
       name: "TaxonRouter",
       stack: "Go",
-      desc: "GitHub Projects (v2) board automation daemon and MCP server.",
+      desc: "GitHub Projects (v2) board automation daemon and MCP server with GraphQL mutations.",
       href: "https://github.com/LOUST-PRO/TaxonRouter",
     },
     {
       name: "storage-mountguardian",
       stack: "Rust",
-      desc: "Linux daemon preventing kernel D-state freezes on failing block devices.",
+      desc: "Linux daemon preventing kernel D-state freezes on failing SCSI/USB block devices.",
       href: "https://github.com/LOUST-PRO/storage-mountguardian",
     },
     {
@@ -51,10 +51,58 @@ export default function Home() {
       href: "https://github.com/LOUST-PRO/NetBoozt_InternetUpgrade",
     },
     {
+      name: "ical-to-caldav",
+      stack: "Python · Go",
+      desc: "iCal-to-CalDAV bridge daemon converting public ICS URLs into local CalDAV calendar streams.",
+      href: "https://github.com/LOUST-PRO/ical-to-caldav",
+    },
+    {
       name: "lzt-virtuoso-tools",
-      stack: "Python",
-      desc: "RDF dataset ingestion pipeline and SPARQL knowledge graph tooling.",
+      stack: "Python · Go",
+      desc: "RDF dataset ingestion pipeline and SPARQL knowledge graph tooling via TTLP_MT.",
       href: "https://github.com/LOUST-PRO/lzt-virtuoso-tools",
+    },
+    {
+      name: "spec-snapshot-scraper",
+      stack: "Go",
+      desc: "Snapshot tool for creating AI-ready documentation corpora with versioning and YAML frontmatter.",
+      href: "https://github.com/LOUST-PRO/spec-snapshot-scraper",
+    },
+    {
+      name: "LLMmempipe",
+      stack: "Rust · Crates.io",
+      desc: "Zero-alloc shared-memory IPC and token-efficient parser for AI agent runtimes.",
+      href: "https://github.com/LOUST-PRO/LLMmempipe",
+    },
+    {
+      name: "outlook-mcp-suite",
+      stack: "TypeScript",
+      desc: "Model Context Protocol suite for Microsoft Graph API & Outlook automation.",
+      href: "https://github.com/LOUST-PRO/outlook-mcp-suite",
+    },
+    {
+      name: "vivaldi-workspace-mcp",
+      stack: "TypeScript",
+      desc: "MCP server for inspecting and managing Vivaldi tab sessions and workspaces on Linux.",
+      href: "https://github.com/LOUST-PRO/vivaldi-workspace-mcp",
+    },
+    {
+      name: "clipboard-wayland-x11-sync",
+      stack: "C · Shell",
+      desc: "Bidirectional Wayland ↔ X11 text clipboard sync daemon (0% CPU idle).",
+      href: "https://github.com/LOUST-PRO/clipboard-wayland-x11-sync",
+    },
+    {
+      name: "lzt-broker-stall-reaper",
+      stack: "Bash",
+      desc: "TCP-level watchdog for self-hosted GitHub Actions runner broker stall detection.",
+      href: "https://github.com/LOUST-PRO/lzt-broker-stall-reaper",
+    },
+    {
+      name: "dsvh-verification-suite",
+      stack: "Python · C",
+      desc: "Deterministic Sovereign RAG companion verification suite backing empirical claims.",
+      href: "https://github.com/LOUST-PRO/dsvh-verification-suite",
     },
   ];
 
@@ -113,7 +161,7 @@ export default function Home() {
         <footer className="mt-16 pt-12 border-t border-slate-800/80 flex flex-col gap-12 text-slate-400">
           
           {/* About Platform & Architecture */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-slate-900/40 border border-slate-800/60 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+          <div id="about" className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-slate-900/40 border border-slate-800/60 rounded-2xl p-6 sm:p-8 backdrop-blur-md scroll-mt-6">
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2 text-slate-200 font-bold text-base">
                 <ShieldCheck className="w-5 h-5 text-sky-400" />
@@ -145,7 +193,7 @@ export default function Home() {
           </div>
 
           {/* LOUST-PRO Core Open-Source Ecosystem */}
-          <div className="flex flex-col gap-4">
+          <div id="ecosystem" className="flex flex-col gap-4 scroll-mt-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-slate-200 font-bold text-sm">
                 <Boxes className="w-4 h-4 text-sky-400" />

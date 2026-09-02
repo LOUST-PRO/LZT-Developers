@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
-  Home, 
   Users, 
+  Boxes,
+  ShieldCheck,
   Code2, 
   Briefcase, 
   PanelLeftClose, 
@@ -22,17 +23,24 @@ export function Sidebar({ expanded, onToggle }: SidebarProps) {
 
   const navItems = [
     {
-      label: "Overview",
-      href: "/",
-      icon: Home,
-      active: pathname === "/",
-      external: false,
-    },
-    {
       label: "Directory",
       href: "/",
       icon: Users,
       active: pathname === "/",
+      external: false,
+    },
+    {
+      label: "Core Ecosystem",
+      href: "/#ecosystem",
+      icon: Boxes,
+      active: false,
+      external: false,
+    },
+    {
+      label: "Architecture",
+      href: "/#about",
+      icon: ShieldCheck,
+      active: false,
       external: false,
     },
     {
@@ -43,7 +51,7 @@ export function Sidebar({ expanded, onToggle }: SidebarProps) {
       external: true,
     },
     {
-      label: "LOUST Systems",
+      label: "LOUST Enterprise",
       href: "https://loust.pro",
       icon: Briefcase,
       active: false,
@@ -53,16 +61,22 @@ export function Sidebar({ expanded, onToggle }: SidebarProps) {
 
   return (
     <aside 
-      className={`fixed top-0 left-0 h-full flex flex-col justify-between bg-slate-950/85 backdrop-blur-xl border-r border-slate-800/70 z-50 text-slate-300 transition-all duration-300 ease-in-out ${
-        expanded ? 'w-64 shadow-2xl shadow-indigo-950/30' : 'w-16'
+      className={`fixed top-0 left-0 h-full flex flex-col justify-between bg-slate-950/90 backdrop-blur-xl border-r border-slate-800/70 z-50 text-slate-300 transition-all duration-300 ease-in-out ${
+        expanded ? 'w-64 shadow-2xl shadow-indigo-950/40' : 'w-16'
       }`}
     >
       <div>
-        {/* Header / Brand */}
-        <div className="h-16 flex items-center px-4 border-b border-slate-800/60 justify-between">
+        {/* Header / Brand Logo */}
+        <div className={`h-16 flex items-center border-b border-slate-800/60 ${
+          expanded ? 'px-4 justify-between' : 'justify-center'
+        }`}>
           <Link href="/" className="flex items-center gap-3 overflow-hidden">
-            <div className="w-8 h-8 shrink-0 rounded-lg bg-gradient-to-br from-sky-500/20 to-indigo-500/30 border border-sky-500/40 flex items-center justify-center shadow-inner">
-              <span className="font-mono font-black text-sm text-sky-400">LZ</span>
+            <div className="w-10 h-10 shrink-0 rounded-xl bg-slate-900 border border-slate-800/90 flex items-center justify-center p-1.5 shadow-sm hover:border-sky-500/40 transition-colors">
+              <img 
+                src="/loust-logo.png" 
+                alt="LOUST" 
+                className="w-6 h-6 object-contain"
+              />
             </div>
             {expanded && (
               <div className="flex flex-col truncate">
@@ -83,16 +97,24 @@ export function Sidebar({ expanded, onToggle }: SidebarProps) {
           )}
         </div>
 
-        {/* Navigation Items */}
-        <nav className="p-2 space-y-1 mt-2">
+        {/* Navigation Items with strictly uniform centering when collapsed */}
+        <nav className="p-2 space-y-2 mt-2">
           {navItems.map((item) => {
             const Icon = item.icon;
             const content = (
               <div
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group relative ${
-                  item.active
-                    ? 'bg-sky-500/10 text-sky-300 border border-sky-500/25 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+                className={`transition-all group relative ${
+                  expanded
+                    ? `flex items-center gap-3 px-3 py-2.5 rounded-xl ${
+                        item.active
+                          ? 'bg-sky-500/10 text-sky-300 border border-sky-500/25 shadow-sm'
+                          : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+                      }`
+                    : `w-10 h-10 mx-auto flex items-center justify-center rounded-xl ${
+                        item.active
+                          ? 'bg-sky-500/15 text-sky-300 border border-sky-500/35 shadow-sm'
+                          : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/50'
+                      }`
                 }`}
                 title={!expanded ? item.label : undefined}
               >
@@ -134,7 +156,7 @@ export function Sidebar({ expanded, onToggle }: SidebarProps) {
             onClick={onToggle}
             aria-label="Expand sidebar"
             title="Expand Sidebar"
-            className="w-full flex items-center justify-center p-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors"
+            className="w-10 h-10 mx-auto flex items-center justify-center rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition-colors"
           >
             <PanelLeft className="w-5 h-5" />
           </button>

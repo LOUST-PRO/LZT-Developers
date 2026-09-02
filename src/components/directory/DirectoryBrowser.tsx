@@ -7,7 +7,6 @@ import {
   X, 
   Globe, 
   MessageSquare, 
-  Sparkles,
   ExternalLink,
   Plus
 } from 'lucide-react';
@@ -143,12 +142,9 @@ export function DirectoryBrowser({ initialMembers }: DirectoryBrowserProps) {
                     className="w-12 h-12 rounded-xl object-cover border border-slate-700/80 ring-2 ring-sky-500/10 shrink-0"
                   />
                   <div className="flex flex-col min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <h3 className="text-lg font-bold text-slate-100 truncate group-hover:text-sky-300 transition-colors">
-                        {member.name}
-                      </h3>
-                      <Sparkles className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                    </div>
+                    <h3 className="text-lg font-bold text-slate-100 truncate group-hover:text-sky-300 transition-colors">
+                      {member.name}
+                    </h3>
                     <a
                       href={member.github}
                       target="_blank"
