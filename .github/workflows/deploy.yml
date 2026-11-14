@@ -12,10 +12,29 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Deploy to VPS Path
+      # Antes: git pull + npm ci + npm run build + pm2 restart EN EL REPO VIVO.
+      # Ahora: la cola global construye en un worktree AISLADO y activa con
+      # swap atomico + health + rollback (nunca retrocede de hash).
+      - name: "\U0001F4E5 Encolar el deploy en la cola global"
+        id: queue
+        env:
+          APP: lzt-dev
+          SHA: "${{ github.sha }}"
+          TS: "${{ github.event.head_commit.timestamp }}"
         run: |
-          cd /home/cms_projects/lzt-developers
-          git pull origin main
-          npm ci
-          npm run build
-          pm2 restart lzt-developers
+          set -euo pipefail
+          TS_EPOCH=$(date -u -d "$TS" +%s)
+          JOB=$(ssh -o BatchMode=yes loust-vps-multiplex \
+            "lzt-deploy-enqueue --app $APP --sha $SHA --commit-ts $TS_EPOCH")
+          echo "job=$JOB" >> "$GITHUB_OUTPUT"
+          echo "job encolado: $JOB"
+
+      - name: "\u23F3\uFE0F Esperar al resultado de la cola"
+        run: |
+          ssh -o BatchMode=yes loust-vps-multiplex \
+            "lzt-deploy-queue wait '${{ steps.queue.outputs.job }}' --timeout 3600"
+
+      - name: "\U0001F4CA Resumen del deploy"
+        run: |
+          ssh -o BatchMode=yes loust-vps-multiplex \
+            "lzt-deploy-queue active; lzt-deploy-queue status --app lzt-dev"
